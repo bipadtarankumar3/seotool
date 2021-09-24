@@ -1,0 +1,140 @@
+<div *ngIf="!somthing_search" class="searching_sec page_speed_searching_home" #namebutton>
+
+    <div class="">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="">
+                    <form  [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group mb-3">
+                                    <select class="form-select form-control" aria-label="Select Protocol" formControlName="protocol" (change)="changeSuit($event)">
+                                        <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
+                                        <option value="https://">https</option>
+                                        <option value="http://">http</option>
+                                      </select>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="input-group mb-3">
+                                    <input type="url" class="form-control" id="base_url"  formControlName="base_url" required placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                      <button type="submit" class="input-group-text" id="basic-addon2"  [disabled]="!profileForm.valid">ANALYZE WEBSITE</button>
+                                    </div>
+                                    
+                                </div>
+                                <div style="color:white" *ngIf="url_error">
+                                    Not a valid URL, Please Enter A Valid Url
+                                </div>
+                            </div>
+                        </div>
+                          
+                    </form>
+
+                    <!-- <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+                        Tooltip on top
+                      </button> -->
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- <div class="loader-container" *ngIf="loaderService.isLoading | async">
+    
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div> -->
+
+<div *ngIf="somthing_search" class="seotool">
+
+    <!-- <div class="cross_button_div">
+        <button class="cross_button" (click)="modal_hide()"><i class="fas fa-times"></i></button>
+    </div> -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+
+                <div class="progress_box">
+                    <h4>Grayline Media</h4>
+                    <h3>
+                        {{data_title}}
+                    </h3>
+                    <p>
+                        {{data_desc}}
+                    </p>
+                    <!-- <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" [ngStyle]="{ width: persantage_var }" aria-valuenow="{{persantage}}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> -->
+
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{persantage}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: persantage_var }"></div>
+                      </div>
+                </div>
+
+                <div *ngIf="persantage >= 99 && 98 <  persantage " class="seo_form_cls">
+                    
+                    <form [formGroup]="userDetailsForm" (ngSubmit)="onSendDetails()">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="First_Name">First Name</label>
+                                    <input type="text" class="form-control" id="First_Name" aria-describedby="emailHelp" formControlName="First_Name" placeholder="Enter Full name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="Last_Name">Last Name</label>
+                                    <input type="text" class="form-control" id="Last_Name" aria-describedby="emailHelp" formControlName="Last_Name" placeholder="Enter Full name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="phone_no">Phone Number</label>
+                                    <input type="number" class="form-control" id="phone_no" placeholder="Enter phone no" formControlName="phone_no">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="message">Example textarea</label>
+                                    <textarea class="form-control" id="message" rows="3" name="message" formControlName="message"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" [disabled]="!userDetailsForm.valid">Submit</button>
+                    </form>
+                </div>
+
+               
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<!-- <div id="ajax_loader" class="loader_page_speed" style="display: none;">
+    <img src="https://graylinemedia.com/wp-content/themes/graylinemedia/images/ajax-loader.gif">
+</div> -->
